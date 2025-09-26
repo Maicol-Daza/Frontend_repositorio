@@ -1,33 +1,33 @@
 const API_URL = "http://localhost:3000/api/permisos";
 
 export const leerPermisos = async () => {
-const res = await fetch(API_URL);    
-if (!res.ok) throw new Error("Error al obtener permisos");
-return res.json(); 
+    const res = await fetch(API_URL);
+    if (!res.ok) throw new Error("Error al obtener permisos");
+    return res.json();
 };
 
-export const crearPermisos = async (permiso) => {
+export const crearPermiso = async (permiso) => {
     const res = await fetch(API_URL, {
         method: "POST",
-        headers: { "Content-Type": "application/json"},
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(permiso),
     });
-    if (!res.ok) throw new UNSAFE_ErrorResponseImpl("Error al actulizar permiso");
-    return res.JSON();
+    if (!res.ok) throw new Error("Error al crear permiso");
+    return res.json();
 };
 
-export const actulizarPermiso = async (id, data) => {
+export const actualizarPermiso = async (id, data) => {
     const res = await fetch(`${API_URL}/${id}`, {
         method: "PUT",
-        headers: { "Content-Type": "aplication/json" },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
     });
-    if (!res.ok) throw new Error("Error al actulizar permiso");
+    if (!res.ok) throw new Error("Error al actualizar permiso");
     return res.json();
 };
 
 export const eliminarPermiso = async (id) => {
-    const res = await fetch(`${API_URL}/${id}`, { method: "DELETE"});
-    if (!res.ok) throw new Error("Error al eliminar permiso");
+    const res = await fetch(`${API_URL}/${id}`, { method: "DELETE" });
+    if (!res.ok) throw new Error("Error al actualizar permiso");
     return res.json();
 };
